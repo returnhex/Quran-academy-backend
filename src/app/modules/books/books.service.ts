@@ -22,7 +22,7 @@ const createBookDB = async (data: IBook) => {
   return Book.create(data);
 };
 
-const updateBookDB = async (id: string, data: Partial<typeof Book>) => {
+const updateBookDB = async (id: string, data: Partial<IBook>) => {
   const updated = await Book.findOneAndUpdate(
     { _id: id, isDeleted: false },
     { $set: data },

@@ -20,10 +20,12 @@ export const changeStatus = async (
   id: string,
   payload: { status: "approved" | "pending" }
 ) => {
-  const result = Review.findOneAndUpdate(
+  const result = await Review.findOneAndUpdate(
     { _id: id },
-    { status: payload.status }
+    { status: payload.status },
+    { new: true }
   );
-  if (!result) throw new ApiError(httpStatus.OK, "Review Not Found or Deleted");
+  if (!result)
+    throw new ApiError(httpStatus.NOT_FOUND, "Review Not Found or Deleted");
   return result;
 };

@@ -4,12 +4,16 @@ import { User } from "./user.model";
 import httpStatus from "http-status";
 import bcrypt from "bcrypt";
 import { Student } from "../students/student.model";
+import { config } from "../../config/config";
 
 const createUserToDB = async (payload: IUser) => {
   const existingUser = await User.findOne({ email: payload.email });
   if (existingUser)
     throw new ApiError(httpStatus.CONFLICT, "User Already Exists");
-  const hashPassword: string = await bcrypt.hash(payload.password, 10);
+  const hashPassword: string = await bcrypt.hash(
+    payload.password,
+    Number(config.saltRound)
+  );
   payload.password = hashPassword;
 
   const result = await User.create(payload);

@@ -1,4 +1,3 @@
-import e from "cors";
 import ApiError from "../../utils/AppError";
 import sendEmail from "../../utils/sendEmail";
 import { Student } from "../students/student.model";

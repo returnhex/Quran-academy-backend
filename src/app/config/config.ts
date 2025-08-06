@@ -3,9 +3,9 @@ dotenv.config();
 
 const config = {
   node_env: process.env.NODE_ENV,
-  port: process.env.PORT,
+  port: process.env.PORT || 5000,
   db_url: process.env.DATABASE_URL,
-  saltRound: process.env.BCRYPT_SALT_ROUND,
+  saltRound: Number(process.env.BCRYPT_SALT_ROUND) || 10,
   jwt_access_secret: process.env.JWT_ACCESS_SECRET,
   jwt_refresh_secret: process.env.JWT_REFRESH_SECRET,
   jwt_access_expiresIn: process.env.JWT_ACCESS_EXPIRES_IN,

@@ -4,5 +4,5 @@ export interface IBook {
   description?: string;
   cover: string;
   url: string;
-  isDeleted: Boolean
+  isDeleted: boolean;
 }

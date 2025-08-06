@@ -39,8 +39,8 @@ export const loginUser = async (payload: IAuth) => {
 
   const refreshToken = createToken(
     jwtPayload,
-    config.jwt_access_secret as string,
-    Number(config.jwt_access_expiresIn)
+    config.jwt_refresh_secret as string,
+    Number(config.jwt_refresh_expiresIn)
   );
 
   return {
@@ -73,7 +73,7 @@ const changePassword = async (
 
   const newHashPassword = await bcrypt.hash(
     payload.newPassword,
-    config.saltRound as string
+    Number(config.saltRound)
   );
 
   const result = await User.findOneAndUpdate(
@@ -117,7 +117,7 @@ const refreshToken = async (token: string) => {
 
   const newAccessToken = createToken(
     jwtPayload,
-    config.jwt_refresh_secret as string,
+    config.jwt_access_secret as string,
     Number(config.jwt_access_expiresIn)
   );
 
@@ -168,7 +168,7 @@ const resetPassword = async (
 
   const hashNewPassword = await bcrypt.hash(
     payload?.newPassword,
-    config.saltRound as string
+    Number(config.saltRound)
   );
   await User.findOneAndUpdate(
     {
