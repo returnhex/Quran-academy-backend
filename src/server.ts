@@ -1,5 +1,5 @@
 import app from "./app";
-import { config } from "./app/config/config";
+import { config } from "./app/config";
 import { connectDB } from "./app/config/database";
 import { Server } from "http";
 

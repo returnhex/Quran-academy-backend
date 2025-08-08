@@ -4,7 +4,7 @@ import { User } from "./user.model";
 import httpStatus from "http-status";
 import bcrypt from "bcrypt";
 import { Student } from "../students/student.model";
-import { config } from "../../config/config";
+import { config } from "../../config";
 
 const createUserToDB = async (payload: IUser) => {
   const existingUser = await User.findOne({ email: payload.email });

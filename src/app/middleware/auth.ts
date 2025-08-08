@@ -1,5 +1,5 @@
 import { JwtPayload } from "jsonwebtoken";
-import { config } from "../config/config";
+import { config } from "../config";
 import { verifyToken } from "../modules/auth/auth.utils";
 import { TUserRole } from "../modules/users/user.interface";
 import ApiError from "../utils/AppError";

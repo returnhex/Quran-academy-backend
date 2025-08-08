@@ -1,6 +1,6 @@
 import { Request, RequestHandler, Response } from "express";
 import httpStatus from "http-status";
-import { config } from "../../config/config";
+import { config } from "../../config";
 import { catchAsync } from "../../utils/CatchAsync";
 import sendResponse from "../../utils/SendResponse";
 import { AuthServices } from "./auth.service";
