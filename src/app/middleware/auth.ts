@@ -6,10 +6,10 @@ import ApiError from "../utils/AppError";
 import { catchAsync } from "../utils/CatchAsync";
 import httpStatus from "http-status";
 import { User } from "../modules/users/user.model";
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 
 const auth = (...requireRoles: TUserRole[]) => {
-  return catchAsync(async (req: Request, res: Response, next) => {
+  return catchAsync(async (req: Request, res: Response, next: NextFunction) => {
     const token = req.headers.authorization;
 
     if (!token)
